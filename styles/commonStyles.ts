@@ -1,5 +1,4 @@
 import { styled } from "@stitches/react";
-import { MAX_WIDTH } from "./constants";
 
 export const GradientSpan = styled("span", {
   background: "$primaryGradient",

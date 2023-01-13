@@ -1,4 +1,3 @@
-import { theme } from "../../styles/stitches.config"
 import { SvgGraphic } from "./SvgGraphic"
 
 type Props = {

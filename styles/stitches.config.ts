@@ -1,8 +1,6 @@
 import { createStitches } from "@stitches/react"
 import {
-	FOOTER_HEIGHT,
 	MAX_WIDTH,
-	NAV_HEIGHT,
 	MOBILE_WIDTH,
 	TABLET_WIDTH,
 } from "./constants"
@@ -86,8 +84,6 @@ export const globalStyles = globalCss({
 	},
 
 	main: {
-		paddingTop: NAV_HEIGHT,
-		paddingBottom: FOOTER_HEIGHT,
 		paddingLeft: "$s",
 		paddingRight: "$s",
 	},
@@ -127,8 +123,8 @@ export const globalStyles = globalCss({
 	},
 
 	p: {
-		fontSize: "$regular",
-		lineHeight: 1.4,
+		fontSize: "$m",
+		lineHeight: 2,
 	},
 
 	"p + p": {

@@ -1,12 +1,15 @@
 import React, { ReactNode, useEffect } from "react"
 import { NextSeo } from "next-seo"
 import { motion } from "framer-motion"
+import { MOBILE_WIDTH, TABLET_WIDTH } from "../../styles/constants"
+import { useRecoilValue, useSetRecoilState } from "recoil"
 import {
-	MOBILE_WIDTH,
-	TABLET_WIDTH,
-} from "../../styles/constants"
-import { useSetRecoilState } from "recoil"
-import { IsDesktopState, IsMobileState, IsTabletState } from "../../state/atoms"
+	IsDesktopState,
+	IsMobileState,
+	IsTabletState,
+	MobileNavShowState,
+} from "../../state/atoms"
+import { styled } from "@stitches/react"
 
 type Props = {
 	children: ReactNode
@@ -15,15 +18,16 @@ type Props = {
 }
 
 const variants = {
-	hidden: { opacity: 0, x: "20%", y: 0 },
+	hidden: { opacity: 0, x: "90%", y: 0 },
 	enter: { opacity: 1, x: 0, y: 0 },
-	exit: { opacity: 0, x: "-20%", y: 0 },
+	exit: { opacity: 0, x: "-80%", y: 0 },
 }
 
 const Layout = ({ children, title, description }: Props): JSX.Element => {
 	const setIsMobile = useSetRecoilState(IsMobileState)
 	const setIsTablet = useSetRecoilState(IsTabletState)
 	const setIsDesktop = useSetRecoilState(IsDesktopState)
+	const showMobileNav = useRecoilValue(MobileNavShowState)
 
 	const updateIsMobile = () => {
 		window.innerWidth <= MOBILE_WIDTH ? setIsMobile(true) : setIsMobile(false)
@@ -71,6 +75,7 @@ const Layout = ({ children, title, description }: Props): JSX.Element => {
 			window.removeEventListener("resize", setViewportHeight)
 		}
 	})
+	
 	return (
 		<>
 			<NextSeo
@@ -78,17 +83,28 @@ const Layout = ({ children, title, description }: Props): JSX.Element => {
 				description={description}
 				openGraph={{ title, description }}
 			/>
-			<motion.main
+			<Main
 				initial="hidden"
 				animate="enter"
 				exit="exit"
 				variants={variants}
 				transition={{ delay: 0 }}
+				navShow={showMobileNav}
 			>
 				{children}
-			</motion.main>
+			</Main>
 		</>
 	)
 }
 
 export default Layout
+
+const Main = styled(motion.main, {
+	variants: {
+		navShow: {
+			true: {
+				transform: "translateX(-100px) !important",
+			},
+		},
+	},
+})

@@ -6,26 +6,26 @@ import { MAX_WIDTH, NAV_HEIGHT } from "../../styles/constants"
 import { Navigation } from "./Navigation"
 
 export const Navbar = () => {
-  const isDesktop = useRecoilValue(IsDesktopState)
+	const isDesktop = useRecoilValue(IsDesktopState)
+
 	return (
 		<Header>
 			<NavWrapper>
 				<Link href="/">
 					<Logo>{isDesktop ? "Drew White" : "DW"}</Logo>
 				</Link>
-				<Navigation/>
+				<Navigation />
 			</NavWrapper>
 		</Header>
 	)
 }
 
 const Header = styled("header", {
-	position: "absolute",
 	width: "100%",
-  height: NAV_HEIGHT,
+	height: NAV_HEIGHT,
 	top: 0,
 	padding: "$s",
-  zIndex: 99,
+	zIndex: 99,
 })
 
 const NavWrapper = styled("nav", {
@@ -36,7 +36,7 @@ const NavWrapper = styled("nav", {
 	margin: "0 auto",
 })
 
-const Logo = styled('div', {
-  fontFamily: "$heading",
-  fontSize: "clamp(1rem, 3vw, 2rem)"
+const Logo = styled("div", {
+	fontFamily: "$heading",
+	fontSize: "clamp(2rem, 3vw, 2rem)",
 })
