@@ -18,9 +18,9 @@ type Props = {
 }
 
 const variants = {
-	hidden: { opacity: 0, x: "90%", y: 0 },
+	hidden: { opacity: 0, x: "50%", y: 0 },
 	enter: { opacity: 1, x: 0, y: 0 },
-	exit: { opacity: 0, x: "-80%", y: 0 },
+	exit: { opacity: 0, x: "-50%", y: 0 },
 }
 
 const Layout = ({ children, title, description }: Props): JSX.Element => {
