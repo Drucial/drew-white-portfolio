@@ -14,12 +14,12 @@ const links: { name: string; href: string }[] = [
 		href: "/",
 	},
 	{
-		name: "Work",
-		href: "/work",
-	},
-	{
 		name: "Projects",
 		href: "/projects",
+	},
+	{
+		name: "Work",
+		href: "/work",
 	},
 	{
 		name: "Leisure",

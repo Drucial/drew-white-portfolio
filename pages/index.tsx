@@ -1,18 +1,21 @@
 import { styled } from "@stitches/react"
+import { useRecoilValue } from "recoil"
 import Layout from "../src/components/Layout"
 import { ScrollIndicator } from "../src/components/ScrollIndiciator"
+import { IsMobileState } from "../state/atoms"
 
 const title = "Hello, I'm Drew 👋"
 const subtitle =
 	"I'm a UI/UX Design Engineer at Stashpad, and living in Charlotte, North Carolina."
 
 export default function About() {
+	const isMobile = useRecoilValue(IsMobileState)
 	return (
 		<Layout title="About" description={`${title} - ${subtitle}`}>
 			<Section>
 				<MainHeading>
 					<TopSpan>UI/UX DESIGN</TopSpan>
-					<MiddleSpan />
+					<MiddleSpan mobile={isMobile} />
 					<BottomSpan>ENGINEER</BottomSpan>
 				</MainHeading>
 			</Section>
@@ -81,7 +84,7 @@ const Section = styled("section", {
 	justifyContent: "center",
 	alignItems: "center",
 	scrollSnapAlign: "start",
-	padding: '$l'
+	padding: "$l",
 })
 
 const MainHeading = styled("h1", {
@@ -103,8 +106,16 @@ const BottomSpan = styled("span", {
 
 const MiddleSpan = styled("span", {
 	width: "100%",
-	marginTop: "$m",
-	border: `2px solid`,
+	marginTop: 16,
+	border: `1px solid`,
+
+	variants: {
+		mobile: {
+			true: {
+				marginTop: 4,
+			},
+		},
+	},
 })
 
 const ContentWrapper = styled("div", {
