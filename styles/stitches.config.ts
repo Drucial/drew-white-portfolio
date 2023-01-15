@@ -94,7 +94,7 @@ export const globalStyles = globalCss({
 		marginLeft: "auto",
 		marginRight: "auto",
 		minHeight: "100%",
-		maxHeight: "100%",
+		// maxHeight: "100%",
 	},
 
 	"h1, h2, h3, h4": {
