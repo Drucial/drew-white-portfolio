@@ -1,7 +1,6 @@
 import { styled } from "@stitches/react"
 import { useRecoilValue } from "recoil"
 import Layout from "../src/components/Layout"
-import { ScrollIndicator } from "../src/components/ScrollIndiciator"
 import { IsMobileState } from "../state/atoms"
 
 const title = "Hello, I'm Drew 👋"

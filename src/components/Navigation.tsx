@@ -27,7 +27,7 @@ const links: { name: string; href: string }[] = [
 	},
 	{
 		name: "Journal",
-		href: "/journal",
+		href: "https://drucial.com",
 	},
 ]
 
@@ -47,7 +47,12 @@ export const Navigation = () => {
 					<NavToggle />
 					<MobileNavList open={showMobileNav}>
 						{links.map(({ name, href }) => (
-							<Link key={name} href={href} onClick={handleHideNav}>
+							<Link
+								key={name}
+								href={href}
+								onClick={handleHideNav}
+								target={name === "Journal" ? "_blank" : "_self"}
+							>
 								<NavItem>
 									{name}
 									{isActiveLink(href, router.pathname) && (
@@ -66,7 +71,11 @@ export const Navigation = () => {
 				<AnimateSharedLayout>
 					<NavList>
 						{links.map(({ name, href }) => (
-							<Link key={name} href={href}>
+							<Link
+								key={name}
+								href={href}
+								target={name === "Journal" ? "_blank" : "_self"}
+							>
 								<NavItem>
 									{name}
 									{isActiveLink(href, router.pathname) && (
