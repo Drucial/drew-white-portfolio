@@ -1,6 +1,6 @@
 export const LeisureData = [
   {
-    name: "Interior & Architextural Design",
+    name: "Interior & Architectural Design",
     description: [],
     images: []
   },

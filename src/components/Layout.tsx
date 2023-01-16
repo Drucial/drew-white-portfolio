@@ -75,13 +75,25 @@ const Layout = ({ children, title, description }: Props): JSX.Element => {
 			window.removeEventListener("resize", setViewportHeight)
 		}
 	})
-	
+
 	return (
 		<>
 			<NextSeo
 				title={title}
 				description={description}
-				openGraph={{ title, description }}
+				openGraph={{
+					title,
+					description,
+					images: [
+						{
+							url: "/preview-image.png",
+							width: 1398,
+							height: 857,
+							alt: "Og Image Alt",
+							type: "image/jpeg",
+						},
+					],
+				}}
 			/>
 			<Main
 				initial="hidden"
