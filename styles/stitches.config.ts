@@ -36,7 +36,7 @@ export const { styled, css, globalCss, theme } = createStitches({
 			xl: "32px",
 			xxl: "64px",
 			h4: "20px",
-			h3: "28px",
+			h3: "24px",
 			h2: "34px",
 			h1: "48px",
 		},

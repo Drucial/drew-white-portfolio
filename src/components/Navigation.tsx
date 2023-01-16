@@ -1,4 +1,4 @@
-import { AnimateSharedLayout, motion } from "framer-motion"
+import { LayoutGroup, motion } from "framer-motion"
 import Link from "next/link"
 import { useRouter } from "next/router"
 import { useRecoilState, useRecoilValue } from "recoil"
@@ -68,7 +68,7 @@ export const Navigation = () => {
 					</MobileNavList>
 				</MobileNavWrapper>
 			) : (
-				<AnimateSharedLayout>
+				<LayoutGroup>
 					<NavList>
 						{links.map(({ name, href }) => (
 							<Link
@@ -89,7 +89,7 @@ export const Navigation = () => {
 							</Link>
 						))}
 					</NavList>
-				</AnimateSharedLayout>
+				</LayoutGroup>
 			)}
 		</>
 	)
