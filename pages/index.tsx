@@ -78,7 +78,6 @@ export default function About() {
 }
 const Section = styled("section", {
 	background: "$dark100",
-	borderRadius: "$radL",
 	display: "flex",
 	justifyContent: "center",
 	alignItems: "center",

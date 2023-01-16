@@ -11,17 +11,17 @@ export const Footer = () => {
 		<FooterWrapper>
 			<Container>
 				<IconWrapper>
-					<Link href="https://github.com/Drucial">
+					<Link href="https://github.com/Drucial" target="_blank">
 						<Icon>
 							<GithubLogo width={"25"} />
 						</Icon>
 					</Link>
-					<Link href="https://twitter.com/drucial">
+					<Link href="https://twitter.com/drucial" target="_blank">
 						<Icon>
 							<TwitterLogo width={"25"} />
 						</Icon>
 					</Link>
-					<Link href="https://www.linkedin.com/in/drucial/">
+					<Link href="https://www.linkedin.com/in/drucial/" target="_blank">
 						<Icon>
 							<LinkedinLogo width={"25"} />
 						</Icon>

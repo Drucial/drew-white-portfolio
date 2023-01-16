@@ -46,7 +46,6 @@ export default function Work() {
 }
 const Section = styled("section", {
 	background: "$dark100",
-	borderRadius: "$radL",
 	display: "flex",
 	flexDirection: "column",
 	alignItems: "center",
@@ -77,7 +76,7 @@ const Card = styled("div", {
 	flexDirection: "column",
 	background: "$dark200",
 	padding: "$xl",
-	borderRadius: "$radL",
+	borderRadius: "$radS",
 	transform: "scale(.9)",
 	transition: "$medium",
 	position: "relative",

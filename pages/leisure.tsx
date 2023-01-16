@@ -9,12 +9,15 @@ export default function Leisure() {
 	return (
 		<Layout title="Leisure" description={`${title} - ${subtitle}`}>
 			<Section>
-				<h1>Leisure</h1>
+				<h1>Coming Soon</h1>
 			</Section>
 		</Layout>
 	)
 }
 const Section = styled("section", {
-	background: "$dark100",
-	borderRadius: "$radL",
+	display: "flex",
+	justifyContent: "center",
+	alignItems: "center",
+	scrollSnapAlign: "start",
+	padding: "$l",
 })
