@@ -2,7 +2,7 @@ import { styled } from "@stitches/react"
 import Link from "next/link"
 import { FOOTER_HEIGHT, MAX_WIDTH } from "../../styles/constants"
 import { GithubLogo } from "../svg/GithubLogo"
-import { LinkedinLogo } from "../svg/linkedinLogo"
+import { LinkedinLogo } from "../svg/LinkedinLogo"
 import { MailLogo } from "../svg/MailLogo"
 import { TwitterLogo } from "../svg/TwitterLogo"
 
