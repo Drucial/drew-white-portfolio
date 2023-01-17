@@ -7,36 +7,10 @@ import { Footer } from "../src/components/Footer"
 import { AnimatePresence } from "framer-motion"
 import { globalStyles } from "../styles/stitches.config"
 import { RecoilRoot } from "recoil"
-import { useEffect } from "react"
-import { useRouter } from "next/router"
-import * as Fathom from "fathom-client"
+import Script from "next/script"
 
 export default function App({ Component, pageProps, router }: AppProps) {
 	const url = `https://www.drew-white.dev${router.route}`
-
-	const router2 = useRouter()
-
-	useEffect(() => {
-		// Initialize Fathom when the app loads
-		// Example: yourdomain.com
-		//  - Do not include https://
-		//  - This must be an exact match of your domain.
-		//  - If you're using www. for your domain, make sure you include that here.
-		Fathom.load("MVWVAEIK", {
-			includedDomains: ["www.drew-white.dev"],
-		})
-
-		function onRouteChangeComplete() {
-			Fathom.trackPageview()
-		}
-		// Record a pageview when route changes
-		router2.events.on("routeChangeComplete", onRouteChangeComplete)
-
-		// Unassign event listener
-		return () => {
-			router2.events.off("routeChangeComplete", onRouteChangeComplete)
-		}
-	}, [])
 
 	globalStyles()
 
@@ -46,6 +20,13 @@ export default function App({ Component, pageProps, router }: AppProps) {
 				<Head>
 					<link rel="icon" href="/favicon.ico" type="image/png" />
 				</Head>
+				{/* Fathom - beautiful, simple website analytics */}
+				<Script
+					src="https://cdn.usefathom.com/script.js"
+					data-site="MVWVAEIK"
+					defer
+				/>
+				{/* / Fathom  */}
 				<DefaultSeo
 					titleTemplate="%s - Drew White"
 					openGraph={{
