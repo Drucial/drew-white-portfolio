@@ -31,15 +31,6 @@ a {
 	text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-	html {
-		color-scheme: dark;
-	}
-	body {
-		color: white;
-		background: black;
-	}
-}
 .app {
 	height: 100vh;
 	height: calc(var(--vh, 1vh) * 100);
