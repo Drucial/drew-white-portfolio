@@ -49,6 +49,7 @@ const Section = styled("section", {
 	display: "flex",
 	flexDirection: "column",
 	alignItems: "center",
+	justifyContent: "center",
 	padding: "$l",
 
 	variants: {
@@ -133,5 +134,5 @@ const Highlights = styled("ul", {
 	},
 })
 const Highlight = styled("li", {
-	color: '$light100'
+	color: "$light100",
 })
