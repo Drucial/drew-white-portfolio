@@ -19,6 +19,7 @@ export const WorkData = [
 			"Implemented final designs in desktop and mobile app.",
 		],
 		logo: StashpadLogo,
+		link: 'https://www.stashpad.com'
 	},
 	{
 		company: "Hyak",
@@ -33,6 +34,7 @@ export const WorkData = [
 			"Acquired September 2021 by Ngage Content of Cleveland, Ohio.",
 		],
 		logo: HyakLogo,
+		link: 'https://www.hyakco.com'
 	},
 	{
 		company: "Dunstone",
@@ -49,5 +51,6 @@ export const WorkData = [
 			"Worked with engineering team and sales team to develop new products for the aerospace, advanced composites, automotive, and energy industries.",
 		],
 		logo: DunstoneLogo,
+		link: 'https://www.shrinktape.com'
 	},
 ]

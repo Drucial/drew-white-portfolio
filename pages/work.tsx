@@ -1,4 +1,5 @@
 import { styled } from "@stitches/react"
+import Link from "next/link"
 import { useRecoilValue } from "recoil"
 import { WorkData } from "../lib/data/workData"
 import Layout from "../src/components/Layout"
@@ -21,22 +22,24 @@ export default function Work() {
 					{WorkData.map((data, i) => {
 						const Logo = data.logo
 						return (
-							<Card key={i}>
-								<LogoWrapper>
-									<Logo width={"50%"} />
-								</LogoWrapper>
-								<Title>{data.title}</Title>
-								<Highlights>
-									{data.highlights.map((item, i) => (
-										<Highlight key={i}>{item}</Highlight>
-									))}
-								</Highlights>
-								<Dates>
-									{data.current
-										? `${data.startDate} - Current`
-										: `${data.startDate} - ${data.endDate}`}
-								</Dates>
-							</Card>
+							<MainLink href={data.link} target="_blank" key={i}>
+								<Card>
+									<LogoWrapper>
+										<Logo width={"50%"} />
+									</LogoWrapper>
+									<Title>{data.title}</Title>
+									<Highlights>
+										{data.highlights.map((item, i) => (
+											<Highlight key={i}>{item}</Highlight>
+										))}
+									</Highlights>
+									<Dates>
+										{data.current
+											? `${data.startDate} - Current`
+											: `${data.startDate} - ${data.endDate}`}
+									</Dates>
+								</Card>
+							</MainLink>
 						)
 					})}
 				</CardGrid>
@@ -72,6 +75,11 @@ const CardGrid = styled("div", {
 	gap: "$xl",
 	width: "100%",
 })
+
+const MainLink = styled(Link, {
+	display: "flex",
+})
+
 const Card = styled("div", {
 	display: "flex",
 	flexDirection: "column",
