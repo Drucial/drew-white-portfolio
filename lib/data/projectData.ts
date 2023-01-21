@@ -1,5 +1,14 @@
 export const ProjectData = [
 	{
+		title: "Stashpad.com [Concept]",
+		subtitle: "A design & engineering exploration",
+		description: [
+			"This website was designed and built as a creative experiment with the intention of pushing the brand and exploring the opportunity to design with no spec or data goals in mind. A purely creative exercise. This was also an opprtunity for me to sharpen my engineering skills, think outside of the box and experiement with the ideas that never fit anywhere else.",
+			"Built for the web using NextJS, Typescript, Stitches, Recoil, FramerMotion, Sanity.io",
+		],
+		link: "https://sp-website-concept.netlify.app/",
+	},
+	{
 		title: "Better Neumorphism",
 		subtitle: "A css generator design tool",
 		description: [
