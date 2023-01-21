@@ -3,8 +3,9 @@ import Layout from "../src/components/Layout"
 import { ProjectData } from "../lib/data/projectData"
 import Link from "next/link"
 import { useEffect, useState } from "react"
-import { useRecoilValue } from "recoil"
-import { IsMobileState, IsTabletState } from "../state/atoms"
+import { useRecoilState, useRecoilValue } from "recoil"
+import { IsMobileState, IsNarrowAppState, IsTabletState } from "../state/atoms"
+import { Project } from "../types"
 
 const title = "Projects"
 const subtitle = "Portfolio projects for UI/UX Design Engineer Drew White"
@@ -30,37 +31,46 @@ export default function Projects() {
 
 	return (
 		<Layout title="Projects" description={`${title} - ${subtitle}`}>
-			{ProjectData.map((project, i) => (
-				<Section key={i} mobile={isTablet || isMobile}>
-					<ProjectWrapper mobile={isTablet || isMobile}>
-						<GraphicsWrapper
-							full={expanded[i]}
-							mobile={isTablet || isMobile}
-							hide={isTablet || isMobile ? (expanded[i] ? true : false) : false}
-						>
-							<IFrame src={project.link} />
-						</GraphicsWrapper>
-						<ContentWrapper mobile={isTablet || isMobile}>
-							<ProjectTitle>{project.title}</ProjectTitle>
-							<ProjectSubtitle>{project.subtitle}</ProjectSubtitle>
-							<ProjectDescription mobile={isMobile}>
-								{project.description.map((text, i) => (
-									<p key={i}>{text}</p>
-								))}
-							</ProjectDescription>
-							<ButtonLink href={project.link} target="_blank">
-								Visit Project &rarr;
-							</ButtonLink>
-						</ContentWrapper>
-						<ExpandToggle
-							expanded={expanded[i]}
-							mobile={isTablet || isMobile}
-							onClick={() => handleExpandClick(i)}
-						/>
-					</ProjectWrapper>
-					{isMobile || (isTablet && <NextButton />)}
-				</Section>
-			))}
+			{ProjectData.map((project, i) => {
+				const App = project.app
+				return (
+					<Section key={i} mobile={isTablet || isMobile}>
+						<ProjectWrapper mobile={isTablet || isMobile}>
+							<GraphicsWrapper
+								full={expanded[i]}
+								mobile={isTablet || isMobile}
+								hide={
+									isTablet || isMobile ? (expanded[i] ? true : false) : false
+								}
+							>
+								{project.website ? (
+									<IFrame src={project.link} />
+								) : (
+									App && <App />
+								)}
+							</GraphicsWrapper>
+							<ContentWrapper mobile={isTablet || isMobile}>
+								<ProjectTitle>{project.title}</ProjectTitle>
+								<ProjectSubtitle>{project.subtitle}</ProjectSubtitle>
+								<ProjectDescription mobile={isMobile}>
+									{project.description.map((text, i) => (
+										<p key={i}>{text}</p>
+									))}
+								</ProjectDescription>
+								<ButtonLink href={project.link} target="_blank">
+									Visit Project &rarr;
+								</ButtonLink>
+							</ContentWrapper>
+							<ExpandToggle
+								expanded={expanded[i]}
+								mobile={isTablet || isMobile}
+								onClick={() => handleExpandClick(i)}
+							/>
+						</ProjectWrapper>
+						{isMobile || (isTablet && <NextButton />)}
+					</Section>
+				)
+			})}
 		</Layout>
 	)
 }

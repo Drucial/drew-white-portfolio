@@ -12,7 +12,7 @@ export const { styled, css, globalCss, theme } = createStitches({
 			white: "hsl(0,0%,98%)",
 			dark100: "hsl(0,0%,10%)",
 			dark200: "hsl(0, 0%, 18%)",
-			light100: "hsl(0,0%,80%)",
+			light100: "hsl(0,0%,75%)",
 			light200: "hsl(0,0%,95%)",
 			primary100: "hsl(40,88%,48%)",
 			primary200: "hsl(45,79%,66%)",
