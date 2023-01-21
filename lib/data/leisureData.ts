@@ -1,22 +1,50 @@
 export const LeisureData = [
   {
-    name: "Interior & Architectural Design",
-    description: [],
-    images: []
+    image: 'https://source.unsplash.com/random',
+    title: '',
+    details: [],
+    category: '',
   },
   {
-    name: "Photography",
-    description: [],
-    images: []
+    image: 'https://source.unsplash.com/random',
+    title: '',
+    details: [],
+    category: '',
   },
   {
-    name: "3D Design",
-    description: [],
-    images: []
+    image: 'https://source.unsplash.com/random',
+    title: '',
+    details: [],
+    category: '',
   },
   {
-    name: "Cycling",
-    description: [],
-    images: []
+    image: 'https://source.unsplash.com/random',
+    title: '',
+    details: [],
+    category: '',
+  },
+  {
+    image: 'https://source.unsplash.com/random',
+    title: '',
+    details: [],
+    category: '',
+  },
+  {
+    image: 'https://source.unsplash.com/random',
+    title: '',
+    details: [],
+    category: '',
+  },
+  {
+    image: 'https://source.unsplash.com/random',
+    title: '',
+    details: [],
+    category: '',
+  },
+  {
+    image: 'https://source.unsplash.com/random',
+    title: '',
+    details: [],
+    category: '',
   },
 ]
