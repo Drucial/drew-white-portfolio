@@ -1,4 +1,5 @@
 import { styled } from "@stitches/react"
+import Link from "next/link"
 import { useRecoilValue } from "recoil"
 import Layout from "../src/components/Layout"
 import { IsMobileState } from "../state/atoms"
@@ -71,6 +72,9 @@ export default function About() {
 						animations, ReactSpring for that springy touch and...there&apos;s
 						too many more but you get the idea.
 					</Text>
+					<Link href="/projects" style={{ textAlign: "center" }}>
+						Projects &rarr;
+					</Link>
 				</ContentWrapper>
 			</Section>
 		</Layout>

@@ -45,14 +45,14 @@ export const StashpadLogo = ({ width, height }: Props) => {
 				fill="white"
 			/>
 			<path
-				fill-rule="evenodd"
-				clip-rule="evenodd"
+				fillRule="evenodd"
+				clipRule="evenodd"
 				d="M31.1258 52.901L7.39544 64.3876V64.3134C15.2798 60.1107 25.432 53.1446 16.3454 47.2616L7.32965 43.0259C4.52025 41.706 4.52024 37.7318 7.32964 36.4119L28.061 46.1397C28.9908 46.5036 30.224 46.544 31.3089 46.1397L52.1449 36.4119C54.9543 37.7318 54.9543 41.706 52.1449 43.0259L31.1258 52.901Z"
 				fill="url(#paint0_linear_4_32)"
 			/>
 			<path
-				fill-rule="evenodd"
-				clip-rule="evenodd"
+				fillRule="evenodd"
+				clipRule="evenodd"
 				d="M28.3591 13.0427L55.3069 0C49.0152 3.05307 32.4456 12.4767 45.4679 19.7442L56.4199 24.8896C59.7912 26.4735 59.7912 31.2425 56.4199 32.8264L31.3531 44.6031C30.3581 45.0706 29.2048 45.0706 28.2098 44.6031L3.14296 32.8264C-0.228332 31.2425 -0.228338 26.4735 3.14295 24.8896L28.3591 13.0427Z"
 				fill="url(#paint1_linear_4_32)"
 			/>
@@ -73,8 +73,8 @@ export const StashpadLogo = ({ width, height }: Props) => {
 					y2="23.3936"
 					gradientUnits="userSpaceOnUse"
 				>
-					<stop stop-color="#C4FA3D" />
-					<stop offset="1" stop-color="#C4FA3E" />
+					<stop stopColor="#C4FA3D" />
+					<stop offset="1" stopColor="#C4FA3E" />
 				</linearGradient>
 				<linearGradient
 					id="paint1_linear_4_32"
@@ -84,8 +84,8 @@ export const StashpadLogo = ({ width, height }: Props) => {
 					y2="44.9537"
 					gradientUnits="userSpaceOnUse"
 				>
-					<stop stop-color="#B3B3B3" />
-					<stop offset="1" stop-color="#7E7E7E" />
+					<stop stopColor="#B3B3B3" />
+					<stop offset="1" stopColor="#7E7E7E" />
 				</linearGradient>
 			</defs>
 		</SvgGraphic>
