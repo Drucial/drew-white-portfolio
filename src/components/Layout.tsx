@@ -112,6 +112,8 @@ const Layout = ({ children, title, description }: Props): JSX.Element => {
 export default Layout
 
 const Main = styled(motion.main, {
+	position: "relative",
+
 	variants: {
 		navShow: {
 			true: {

@@ -24,3 +24,8 @@ export const ShowContactFormState = atom({
   key: 'ShowContactFormState',
   default: false,
 });
+
+export const ShowLeisureModalState = atom({
+  key: 'ShowLeisureModalState',
+  default: false,
+});

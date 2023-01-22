@@ -56,8 +56,8 @@ export const { styled, css, globalCss, theme } = createStitches({
 			radF: "999px",
 		},
 		shadows: {
-			small: "0 0 15px rgba(0,0,0,0.25)",
-			large: "0 0 35px rgba(0,0,0,0.25)",
+			small: "0 0 15px rgba(0,0,0,0.35)",
+			large: "0 0 35px rgba(0,0,0,0.35)",
 		},
 		transitions: {
 			short: "150ms ease",
