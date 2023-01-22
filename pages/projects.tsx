@@ -5,6 +5,8 @@ import Link from "next/link"
 import { useEffect, useState } from "react"
 import { useRecoilValue } from "recoil"
 import { IsMobileState, IsTabletState } from "../state/atoms"
+import { ContractIcon } from "../src/icons/ContractIcon"
+import { ExpandIcon } from "../src/icons/ExpandIcon"
 
 const title = "Projects"
 const subtitle = "Portfolio projects for UI/UX Design Engineer Drew White"
@@ -36,7 +38,7 @@ export default function Projects() {
 						<GraphicsWrapper
 							full={expanded[i]}
 							mobile={isTablet || isMobile}
-							hide={isTablet || isMobile ? (expanded[i] ? true : false) : false}
+							hide={isTablet || isMobile ? (expanded[i] ? false : true) : false}
 						>
 							<IFrame src={project.link} />
 						</GraphicsWrapper>
@@ -53,10 +55,15 @@ export default function Projects() {
 							</ButtonLink>
 						</ContentWrapper>
 						<ExpandToggle
-							expanded={expanded[i]}
 							mobile={isTablet || isMobile}
 							onClick={() => handleExpandClick(i)}
-						/>
+						>
+							{expanded[i] ? (
+								<ContractIcon size={15} />
+							) : (
+								<ExpandIcon size={15} />
+							)}
+						</ExpandToggle>
 					</ProjectWrapper>
 					{isMobile || (isTablet && <NextButton />)}
 				</Section>
@@ -150,6 +157,9 @@ const IFrame = styled("iframe", {
 })
 
 const ExpandToggle = styled("div", {
+	display: "flex",
+	alignItems: "center",
+	justifyContent: "center",
 	position: "absolute",
 	top: -10,
 	right: -10,
@@ -157,46 +167,26 @@ const ExpandToggle = styled("div", {
 	height: 40,
 	borderRadius: 20,
 	background: "$black",
-	border: "1px solid $primary100",
+	border: "1px solid $light100",
+	color: "$light100",
 	cursor: "pointer",
 	transform: "scale(.9)",
 	transition: "$medium",
 	zIndex: 3,
 
-	"&::after": {
-		position: "absolute",
-		content: "↗",
-		color: "$primary100",
-		fontSize: 24,
-		lineHeight: 1,
-		top: "50%",
-		left: "50%",
-		transform: "translate(-50%, -50%)",
-		transition: "$medium",
-	},
-
 	"&:hover": {
+		border: "1px solid $primary100",
+		color: "$primary100",
 		transform: "scale(1)",
 	},
 
 	variants: {
-		expanded: {
-			true: {
-				"&::after": {
-					transform: "translate(-50%, -50%) rotate(180deg)",
-				},
-			},
-		},
 		mobile: {
 			true: {
 				top: "auto",
 				right: "$l",
 				bottom: "$l",
 				boxShadow: "0px 0px 15px rgba(0,0,0,.3)",
-
-				"&::after": {
-					content: "i",
-				},
 			},
 		},
 	},
