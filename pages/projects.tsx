@@ -59,9 +59,9 @@ export default function Projects() {
 							onClick={() => handleExpandClick(i)}
 						>
 							{expanded[i] ? (
-								<ContractIcon size={15} />
-							) : (
 								<ExpandIcon size={15} />
+							) : (
+								<ContractIcon size={15} />
 							)}
 						</ExpandToggle>
 					</ProjectWrapper>
