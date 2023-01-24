@@ -58,7 +58,7 @@ export const LeisureData = [
 		image: {
 			src: "/img/the-office.jpg",
 			width: 2000,
-			height: 1125,
+			height: 2000,
 		},
 
 		title: "The Office",

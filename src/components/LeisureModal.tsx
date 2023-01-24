@@ -2,44 +2,45 @@ import { styled } from "@stitches/react"
 import { LeisureItem } from "../../types"
 import Image from "next/image"
 import { CloseIcon } from "../icons/CloseIcon"
-import { useRecoilState, useSetRecoilState } from "recoil"
-import { ShowLeisureModalState } from "../../state/atoms"
+import { useRecoilValue, useSetRecoilState } from "recoil"
+import {
+	IsMobileState,
+	IsTabletState,
+	ShowLeisureModalState,
+} from "../../state/atoms"
 import { useState } from "react"
+import { MAX_WIDTH } from "../../styles/constants"
 
 type Props = {
 	details: LeisureItem
 }
 
 export const LeisureModal = ({ details }: Props) => {
+	const isMobile = useRecoilValue(IsMobileState)
+	const isTablet = useRecoilValue(IsTabletState)
 	const setShowModal = useSetRecoilState(ShowLeisureModalState)
-  const [showDetails, setShowDetails] = useState(false)
+	const [showDetails, setShowDetails] = useState(false)
+	const size =
+		!isMobile && !isTablet && details.image.height === 2000 ? "tall" : "wide"
+
 	const handleCloseModal = () => {
 		setShowModal(false)
 	}
 
 	return (
 		<ModalWrapper>
-			<ImageWrapper>
-        <GalleryImage
-          src={details.image.src}
-          alt={details.title}
-          width={details.image.width}
-          height={details.image.height}
-        />
-      </ImageWrapper>
-			<CloseModal onClick={handleCloseModal}>
-				<CloseIcon height={15} />
-			</CloseModal>
-			{/* <DetailsWrapper>
-				<Category>{details.category}</Category>
-				<TitleWrapper>
-          <Title>{details.title}</Title>
-          <p>{showDetails ? "hide details" : "Details..."}</p>
-        </TitleWrapper>
-				{showDetails && details.details.map((p, i) => (
-					<Detail key={i}>{p}</Detail>
-				))}
-			</DetailsWrapper> */}
+			<ImageWrapper size={size}>
+				<GalleryImage
+					size={size}
+					src={details.image.src}
+					alt={details.title}
+					width={details.image.width}
+					height={details.image.height}
+				/>
+				<CloseModal onClick={handleCloseModal}>
+					<CloseIcon height={15} />
+				</CloseModal>
+			</ImageWrapper>
 		</ModalWrapper>
 	)
 }
@@ -50,11 +51,13 @@ const ModalWrapper = styled("div", {
 	justifyContent: "center",
 	padding: "$l",
 	position: "absolute",
+	width: "100%",
+	height: "100%",
+	maxWidth: MAX_WIDTH,
 	top: 0,
-	right: 0,
-	bottom: 0,
-	left: 0,
+	left: "50%",
 	background: "rgba(0,0,0,.7)",
+	transform: "translateX(-50%)",
 })
 
 const CloseModal = styled("div", {
@@ -62,8 +65,8 @@ const CloseModal = styled("div", {
 	alignItems: "center",
 	justifyContent: "center",
 	position: "absolute",
-	top: 8,
-	right: 16,
+	top: -8,
+	right: -8,
 	width: 30,
 	height: 30,
 	borderRadius: 15,
@@ -79,45 +82,39 @@ const CloseModal = styled("div", {
 })
 
 const ImageWrapper = styled("div", {
-  width: '100%',
-  height: '100%',
+	position: "relative",
+	variants: {
+		size: {
+			tall: {
+				height: "100%",
+				width: "auto",
+			},
+			wide: {
+				width: "100%",
+				height: "auto",
+			},
+		},
+	},
 })
 
 const GalleryImage = styled(Image, {
 	display: "block",
-  objectFit: 'contain',
-	width: "100%",
-	maxHeight: "100%",
-	// maxWidth: "100%",
-	// maxHeight: "100%",
-	// borderRadius: "$radS",
-	// boxShadow: "$large",
-})
+	borderRadius: "$radS",
 
-const DetailsWrapper = styled("div", {
-  position: 'absolute',
-  bottom: 0,
-  left: "50%",
-  transform: 'translateX(-50%)',
-  width: 600,
-  maxWidth: '100%',
-  padding: '$l',
-  background: 'rgba(0,0,0,.7)',
-  backdropFilter: 'blur(8px)',
-  borderRadius: '$radL'
+	variants: {
+		size: {
+			tall: {
+				height: "100%",
+				width: "auto",
+			},
+			wide: {
+				width: "100%",
+				height: "auto",
+			},
+		},
+	},
 })
 
 const Category = styled("p", {})
-
-const TitleWrapper = styled('div', {
-  display: 'flex',
-  alignItems: 'flex-end',
-
-  '& p': {
-    lineHeight: 1.2,
-    marginLeft: '$l',
-    opacity: 0.6
-  }
-})
 const Title = styled("h2", {})
 const Detail = styled("p", {})
