@@ -22,8 +22,8 @@ const links: { name: string; href: string }[] = [
 		href: "/work",
 	},
 	{
-		name: "Leisure",
-		href: "/leisure",
+		name: "Mediums",
+		href: "/mediums",
 	},
 	{
 		name: "Journal",

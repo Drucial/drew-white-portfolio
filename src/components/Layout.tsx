@@ -1,6 +1,6 @@
 import React, { ReactNode, useEffect } from "react"
 import { NextSeo } from "next-seo"
-import { motion } from "framer-motion"
+import { AnimatePresence, motion } from "framer-motion"
 import { MOBILE_WIDTH, TABLET_WIDTH } from "../../styles/constants"
 import { useRecoilValue, useSetRecoilState } from "recoil"
 import {
@@ -8,8 +8,11 @@ import {
 	IsMobileState,
 	IsTabletState,
 	MobileNavShowState,
+	ModalDetailsState,
+	ShowMediumsModalState,
 } from "../../state/atoms"
 import { styled } from "@stitches/react"
+import { MediumsModal } from "./MediumsModal"
 
 type Props = {
 	children: ReactNode
@@ -28,6 +31,8 @@ const Layout = ({ children, title, description }: Props): JSX.Element => {
 	const setIsTablet = useSetRecoilState(IsTabletState)
 	const setIsDesktop = useSetRecoilState(IsDesktopState)
 	const showMobileNav = useRecoilValue(MobileNavShowState)
+	const showModal = useRecoilValue(ShowMediumsModalState)
+	const modalDetails = useRecoilValue(ModalDetailsState)
 
 	const updateIsMobile = () => {
 		window.innerWidth <= MOBILE_WIDTH ? setIsMobile(true) : setIsMobile(false)
@@ -105,6 +110,9 @@ const Layout = ({ children, title, description }: Props): JSX.Element => {
 			>
 				{children}
 			</Main>
+			<AnimatePresence>
+				{showModal && <MediumsModal details={modalDetails!} />}
+			</AnimatePresence>
 		</>
 	)
 }
@@ -112,7 +120,11 @@ const Layout = ({ children, title, description }: Props): JSX.Element => {
 export default Layout
 
 const Main = styled(motion.main, {
-	position: "relative",
+	width: '100%',
+	height: '100%',
+	overflowY: 'scroll',
+	overflowX: 'hidden',
+	transition: '$medium',
 
 	variants: {
 		navShow: {

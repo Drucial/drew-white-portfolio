@@ -1,41 +1,42 @@
 import Masonry from "react-masonry-css"
 import { styled } from "@stitches/react"
-import { LeisureData } from "../lib/data/leisureData"
+import { MediumsData } from "../lib/data/mediumsData"
 import Layout from "../src/components/Layout"
 import Image from "next/image"
 import { useState } from "react"
-import { LeisureModal } from "../src/components/LeisureModal"
-import { LeisureItem } from "../types"
+import { MediumsModal } from "../src/components/MediumsModal"
+import { MediumsItem } from "../types"
 import { useRecoilState } from "recoil"
-import { ShowLeisureModalState } from "../state/atoms"
+import { ModalDetailsState, ShowMediumsModalState } from "../state/atoms"
+import { AnimatePresence } from "framer-motion"
 
 const title = "Hello, I'm Drew 👋"
 const subtitle =
 	"I'm a UI/UX Design Engineer at Stashpad, and living in Charlotte, North Carolina."
 
-export default function Leisure() {
-	const [showModal, setShowModal] = useRecoilState(ShowLeisureModalState)
-	const [modalDetails, setModalDetails] = useState<LeisureItem>()
+export default function Mediums() {
+	const [showModal, setShowModal] = useRecoilState(ShowMediumsModalState)
+	const [modalDetails, setModalDetails] = useRecoilState(ModalDetailsState)
 	const breakpointColumnsObj = {
 		default: 3,
 		1000: 2,
 		640: 1,
 	}
 
-	const handleClick = (item: LeisureItem) => {
+	const handleClick = (item: MediumsItem) => {
 		setModalDetails(item)
 		setShowModal((prev) => !prev)
 	}
 
 	return (
-		<Layout title="Leisure" description={`${title} - ${subtitle}`}>
+		<Layout title="Design Mediums" description={`${title} - ${subtitle}`}>
 			<Section>
 				<Masonry
 					breakpointCols={breakpointColumnsObj}
 					className="masonry-grid"
 					columnClassName="masonry-grid-column"
 				>
-					{LeisureData.map((item, i) => (
+					{MediumsData.map((item, i) => (
 						<Card key={i} onClick={() => handleClick(item)}>
 							<HoverDetails>
 								<Category>{item.category}</Category>
@@ -52,7 +53,6 @@ export default function Leisure() {
 					))}
 				</Masonry>
 			</Section>
-			{showModal && <LeisureModal details={modalDetails!} />}
 		</Layout>
 	)
 }

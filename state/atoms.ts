@@ -1,3 +1,4 @@
+import { MediumsItem } from './../types'
 import { atom } from 'recoil'
 
 export const IsMobileState = atom({
@@ -25,7 +26,12 @@ export const ShowContactFormState = atom({
   default: false,
 });
 
-export const ShowLeisureModalState = atom({
-  key: 'ShowLeisureModalState',
+export const ShowMediumsModalState = atom({
+  key: 'ShowMediumsModalState',
   default: false,
+});
+
+export const ModalDetailsState = atom({
+  key: 'ModalDetailsState',
+  default: <MediumsItem>{},
 });

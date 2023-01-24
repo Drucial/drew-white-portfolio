@@ -1,7 +1,7 @@
 import { styled } from "@stitches/react"
 import Link from "next/link"
 import { useRecoilState } from "recoil"
-import { ShowLeisureModalState } from "../../state/atoms"
+import { ShowMediumsModalState } from "../../state/atoms"
 import { FOOTER_HEIGHT, MAX_WIDTH } from "../../styles/constants"
 import { GithubLogo } from "../svg/GithubLogo"
 import { LinkedinLogo } from "../svg/LinkedinLogo"
@@ -9,7 +9,7 @@ import { MailLogo } from "../svg/MailLogo"
 import { TwitterLogo } from "../svg/TwitterLogo"
 
 export const Footer = () => {
-	const [showModal, setShowModal] = useRecoilState(ShowLeisureModalState)
+	const [showModal, setShowModal] = useRecoilState(ShowMediumsModalState)
 
 	const handleClick = () => {
 		if (showModal) {

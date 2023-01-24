@@ -1,13 +1,13 @@
 import { styled } from "@stitches/react"
 import Link from "next/link"
 import { useRecoilState, useRecoilValue } from "recoil"
-import { IsDesktopState, ShowLeisureModalState } from "../../state/atoms"
+import { IsDesktopState, ShowMediumsModalState } from "../../state/atoms"
 import { MAX_WIDTH, NAV_HEIGHT } from "../../styles/constants"
 import { Navigation } from "./Navigation"
 
 export const Navbar = () => {
 	const isDesktop = useRecoilValue(IsDesktopState)
-	const [showModal, setShowModal] = useRecoilState(ShowLeisureModalState)
+	const [showModal, setShowModal] = useRecoilState(ShowMediumsModalState)
 
 	const handleClick = () => {
 		if (showModal) {

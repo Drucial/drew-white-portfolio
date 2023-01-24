@@ -1,4 +1,4 @@
-export type LeisureItem = {
+export type MediumsItem = {
 	image: {
 		src: string
 		width: number
