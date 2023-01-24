@@ -9,6 +9,7 @@ import { MediumsItem } from "../types"
 import { useRecoilState } from "recoil"
 import { ModalDetailsState, ShowMediumsModalState } from "../state/atoms"
 import { AnimatePresence } from "framer-motion"
+import { MAX_WIDTH, MOBILE_WIDTH } from "../styles/constants"
 
 const title = "Hello, I'm Drew 👋"
 const subtitle =
@@ -43,6 +44,7 @@ export default function Mediums() {
 								<Title>{item.title}</Title>
 							</HoverDetails>
 							<GalleryImage
+								sizes={`(max-width: ${MOBILE_WIDTH}) 100vw,(max-width: ${MAX_WIDTH}) 50vw, ${MAX_WIDTH / 3}`}
 								key={i}
 								src={item.image.src}
 								alt={item.title}

@@ -21,9 +21,9 @@ type Props = {
 }
 
 const variants = {
-	hidden: { opacity: 0, x: "50%", y: 0 },
-	enter: { opacity: 1, x: 0, y: 0 },
-	exit: { opacity: 0, x: "-50%", y: 0 },
+	hidden: { opacity: 0 },
+	enter: { opacity: 1 },
+	exit: { opacity: 0 },
 }
 
 const Layout = ({ children, title, description }: Props): JSX.Element => {
@@ -120,11 +120,11 @@ const Layout = ({ children, title, description }: Props): JSX.Element => {
 export default Layout
 
 const Main = styled(motion.main, {
-	width: '100%',
-	height: '100%',
-	overflowY: 'scroll',
-	overflowX: 'hidden',
-	transition: '$medium',
+	width: "100%",
+	height: "100%",
+	overflowY: "scroll",
+	overflowX: "hidden",
+	transition: "$medium",
 
 	variants: {
 		navShow: {

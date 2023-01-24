@@ -9,7 +9,12 @@ import {
 	ShowMediumsModalState,
 } from "../../state/atoms"
 import { useState } from "react"
-import { FOOTER_HEIGHT, MAX_WIDTH, NAV_HEIGHT } from "../../styles/constants"
+import {
+	FOOTER_HEIGHT,
+	MAX_WIDTH,
+	MOBILE_WIDTH,
+	NAV_HEIGHT,
+} from "../../styles/constants"
 import { motion } from "framer-motion"
 
 type Props = {
@@ -44,6 +49,7 @@ export const MediumsModal = ({ details }: Props) => {
 		>
 			<ImageWrapper size={size}>
 				<GalleryImage
+					sizes={`(max-width: ${MAX_WIDTH}) 100vw, ${MAX_WIDTH}`}
 					size={size}
 					src={details.image.src}
 					alt={details.title}
