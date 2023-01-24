@@ -94,7 +94,7 @@ const ModalWrapper = styled(motion.div, {
 	variants: {
 		mobile: {
 			true: {
-				padding: "$m",
+				padding: "$l $m",
 				background: "$black",
 			},
 		},
