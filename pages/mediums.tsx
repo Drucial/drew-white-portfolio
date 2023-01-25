@@ -8,7 +8,7 @@ import { MediumsModal } from "../src/components/MediumsModal"
 import { MediumsItem } from "../types"
 import { useRecoilState } from "recoil"
 import { ModalDetailsState, ShowMediumsModalState } from "../state/atoms"
-import { AnimatePresence } from "framer-motion"
+import { AnimatePresence, motion } from "framer-motion"
 import { MAX_WIDTH, MOBILE_WIDTH } from "../styles/constants"
 
 const title = "Hello, I'm Drew 👋"
@@ -29,6 +29,12 @@ export default function Mediums() {
 		setShowModal((prev) => !prev)
 	}
 
+	const variants = {
+		hidden: { opacity: 0 },
+		enter: { opacity: 1 },
+		exit: { opacity: 0 },
+	}
+
 	return (
 		<Layout title="Design Mediums" description={`${title} - ${subtitle}`}>
 			<Section>
@@ -38,18 +44,27 @@ export default function Mediums() {
 					columnClassName="masonry-grid-column"
 				>
 					{MediumsData.map((item, i) => (
-						<Card key={i} onClick={() => handleClick(item)}>
+						<Card
+							key={i}
+							initial="hidden"
+							animate="enter"
+							exit="exit"
+							variants={variants}
+							onClick={() => handleClick(item)}
+						>
 							<HoverDetails>
 								<Category>{item.category}</Category>
 								<Title>{item.title}</Title>
 							</HoverDetails>
 							<GalleryImage
-								sizes={`(max-width: ${MOBILE_WIDTH}) 100vw,(max-width: ${MAX_WIDTH}) 50vw, ${MAX_WIDTH / 3}`}
 								key={i}
 								src={item.image.src}
 								alt={item.title}
 								width={item.image.width}
 								height={item.image.height}
+								sizes={`(max-width: ${MOBILE_WIDTH}) 100vw,(max-width: ${MAX_WIDTH}) 50vw, ${
+									MAX_WIDTH / 3
+								}`}
 							/>
 						</Card>
 					))}
@@ -63,7 +78,7 @@ const Section = styled("section", {
 	position: "relative",
 })
 
-const Card = styled("div", {
+const Card = styled(motion.div, {
 	position: "relative",
 })
 
