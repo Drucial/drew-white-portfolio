@@ -1,4 +1,4 @@
-import { styled } from "@stitches/react"
+import { keyframes, styled } from "@stitches/react"
 import Link from "next/link"
 import { useRecoilValue } from "recoil"
 import Layout from "../src/components/Layout"
@@ -24,7 +24,8 @@ export default function About() {
 					<Heading>Hey, I&apos;m Drew 🖖🏻</Heading>
 					<Text>
 						Thanks for checking out my website! I am a{" "}
-						<span>UI/UX Design Engineer</span> based in Charlotte, North Carolina. I love to <span>design </span>
+						<span>UI/UX Design Engineer</span> based in Charlotte, North
+						Carolina. I love to <span>design </span>
 						forward thinking, thoughtful, and exciting interfaces and
 						experiences for mobile, desktop and the web...and I like to{" "}
 						<span>build</span> them too!
@@ -35,7 +36,13 @@ export default function About() {
 				<ContentWrapper>
 					<Heading>Design Philosophy</Heading>
 					<Text>
-						When it comes to design, regardless of medium, I favor <span>minimalism</span> and the idea that less is more. Heavy focus on heirarchy and user journey <span>backed by data</span> are at the core of my style and philosophy. I love to push the boundries of convention in a way that creates a <span>pleasing, yet familiar journey</span> through any product I am working on. 
+						When it comes to design, regardless of medium, I favor{" "}
+						<span>minimalism</span> and the idea that less is more. Heavy focus
+						on heirarchy and user journey <span>backed by data</span> are at the
+						core of my style and philosophy. I love to push the boundries of
+						convention in a way that creates a{" "}
+						<span>pleasing, yet familiar journey</span> through any product I am
+						working on.
 						{/* I am a <span>minimalist</span> at heart and strongly believe that
 						less is more in almost every situation. I love to push the boundries
 						of convention while throwing familiar nods to users to take them on
@@ -50,12 +57,13 @@ export default function About() {
 				<ContentWrapper>
 					<Heading>Design Tools</Heading>
 					<Text>
-						Today, I work through most of my design process in <span>Figma</span>.
-						Prototypes are managed in Figma or a code sandbox like CodePen if
-						there is substantial interaction design. Icons and graphics are
-						handled in Adobe <span>Illustrator</span> and <span>Photoshop</span>{" "}
-						respectively. Finally, for any 3D work or animations I prefer to
-						work in <span>Cinema4D</span> using Octane Render.
+						Today, I work through most of my design process in{" "}
+						<span>Figma</span>. Prototypes are managed in Figma or a code
+						sandbox like CodePen if there is substantial interaction design.
+						Icons and graphics are handled in Adobe <span>Illustrator</span> and{" "}
+						<span>Photoshop</span> respectively. Finally, for any 3D work or
+						animations I prefer to work in <span>Cinema4D</span> using Octane
+						Render.
 					</Text>
 				</ContentWrapper>
 			</Section>
@@ -68,7 +76,7 @@ export default function About() {
 						working with a wide range of libraries including NextJS,{" "}
 						<span>Stitches</span> for styled components, <span>Recoil </span>
 						for state managment, <span>Framer Motion</span> for all the good
-						animations, ReactSpring for that springy touch and...there&apos;s
+						animations, React Spring for that springy touch and...there&apos;s
 						too many more but you get the idea.
 					</Text>
 					<Link href="/projects" style={{ textAlign: "center" }}>
@@ -97,6 +105,7 @@ const MainHeading = styled("h1", {
 const TopSpan = styled("span", {
 	fontWeight: "$3",
 	background: "$primaryGradient",
+	backgroundSize: "400%",
 	WebkitBackgroundClip: "text",
 	WebkitTextFillColor: "transparent",
 })
