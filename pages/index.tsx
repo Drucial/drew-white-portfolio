@@ -1,4 +1,4 @@
-import { keyframes, styled } from "@stitches/react"
+import { styled } from "@stitches/react"
 import Link from "next/link"
 import { useRecoilValue } from "recoil"
 import Layout from "../src/components/Layout"
@@ -105,7 +105,6 @@ const MainHeading = styled("h1", {
 const TopSpan = styled("span", {
 	fontWeight: "$3",
 	background: "$primaryGradient",
-	backgroundSize: "400%",
 	WebkitBackgroundClip: "text",
 	WebkitTextFillColor: "transparent",
 })

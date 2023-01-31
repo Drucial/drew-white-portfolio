@@ -59,7 +59,7 @@ export const MediumsModal = ({ details }: Props) => {
 				<CloseModal onClick={handleCloseModal}>
 					<CloseIcon height={15} />
 				</CloseModal>
-				{!isMobile && (
+				{(!isMobile && !isTablet) && (
 					<ProjectDetails mobile={isMobile}>
 						<Category>{details.category}</Category>
 						<Title>{details.title}</Title>
@@ -69,7 +69,7 @@ export const MediumsModal = ({ details }: Props) => {
 					</ProjectDetails>
 				)}
 			</ImageWrapper>
-			{isMobile && (
+			{(isMobile || isTablet) && (
 				<ProjectDetails>
 					<Category>{details.category}</Category>
 					<Title>{details.title}</Title>
@@ -173,10 +173,14 @@ const ProjectDetails = styled("div", {
 				position: "absolute",
 				top: 0,
 				left: 0,
-				padding: "$m",
-				background: "rgba(0,0,0,.7)",
-				borderRadius: "$radS",
-				zINdex: 1,
+				width: 300,
+				// borderLeft: '1px solid $primary100',
+				// transform: 'translateY(-50%)',
+				padding: "$xl $m",
+				background: "rgba(0,0,0,.5)",
+				borderRadius: "$radS 0 $radS 0",
+				backdropFilter: 'blur(4px)',
+				zIndex: 1,
 			},
 		},
 	},
