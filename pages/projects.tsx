@@ -59,9 +59,15 @@ export default function Projects() {
 							onClick={() => handleExpandClick(i)}
 						>
 							{expanded[i] ? (
-								<ExpandIcon size={15} />
-							) : (
+								isMobile ? (
+									<ExpandIcon size={15} />
+								) : (
+									<ContractIcon size={15} />
+								)
+							) : isMobile ? (
 								<ContractIcon size={15} />
+							) : (
+								<ExpandIcon size={15} />
 							)}
 						</ExpandToggle>
 					</ProjectWrapper>
@@ -91,7 +97,7 @@ const ProjectWrapper = styled("div", {
 	flexDirection: "column",
 	justifyContent: "center",
 	position: "relative",
-	background: "$dark200",
+	background: "$dark100",
 	width: "95%",
 	maxWidth: 1300,
 	aspectRatio: 1.778,
@@ -115,6 +121,7 @@ const GraphicsWrapper = styled("div", {
 	height: "100%",
 	minWidth: 320,
 	aspectRatio: 0.46,
+	border: '1px solid rgba(255,255,255,.1)',
 	borderRadius: "$radL",
 	boxShadow: "0px 0px 25px rgba(0,0,0,.5)",
 	transition: "$long",
@@ -130,6 +137,7 @@ const GraphicsWrapper = styled("div", {
 		},
 		mobile: {
 			true: {
+				
 				top: 0,
 				left: 0,
 				width: "100%",
