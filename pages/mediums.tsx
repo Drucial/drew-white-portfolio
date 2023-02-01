@@ -8,11 +8,20 @@ import { useSetRecoilState } from "recoil"
 import { ModalDetailsState, ShowMediumsModalState } from "../state/atoms"
 import { motion } from "framer-motion"
 import { MAX_WIDTH, MOBILE_WIDTH } from "../styles/constants"
-import { GradientSpan } from "../styles/commonStyles"
+import { PageHeader } from "../src/components/PageHeader"
 
-const title = "Hello, I'm Drew 👋"
+const title = "Design Mediums"
 const subtitle =
-	"I'm a UI/UX Design Engineer at Stashpad, and living in Charlotte, North Carolina."
+	"While my primary focus is on UX/UI design and software enginnering, I am a student of architectural, interior and 3D design as well."
+const description = (
+	<>
+		While my primary focus is on UX/UI design and software enginnering, I am a
+		student of many other design mediums as well. For the last 8 years my
+		free-time has been occupied by{" "}
+		<span>architectural, interior and 3D design</span> both as a freelancer and
+		a hobbyist. Below you can see some examples of this work.
+	</>
+)
 
 export default function Mediums() {
 	const setShowModal = useSetRecoilState(ShowMediumsModalState)
@@ -36,14 +45,7 @@ export default function Mediums() {
 
 	return (
 		<Layout title="Design Mediums" description={`${title} - ${subtitle}`}>
-			<Header>
-				<MainTitle>
-					<GradientSpan>Mediums</GradientSpan>
-				</MainTitle>
-				<Description>
-					While my primary focus is UX/UI design and software enginnering, I am a student of many other design mediums as well. For the last 8 years my free-time has been occupied by <span>architectural, interior and 3D design</span> both as a freelancer and a hobbyist. Below you can see some examples of this work.
-				</Description>
-			</Header>
+			<PageHeader title={title} description={description} />
 			<Section>
 				<Masonry
 					breakpointCols={breakpointColumnsObj}
@@ -80,25 +82,6 @@ export default function Mediums() {
 		</Layout>
 	)
 }
-
-const Header = styled("div", {
-	display: 'flex',
-	flexDirection: 'column',
-	alignItems: 'center',
-	margin: "$xl $m $xxl",
-})
-
-const MainTitle = styled("h1", {
-	marginBottom: '$l',
-})
-const Description = styled("p", {
-	maxWidth: 900,
-	textAlign: 'center',
-
-	'& span': {
-		color: '$primary100'
-	}
-})
 
 const Section = styled("section", {
 	minHeight: "max-content",
