@@ -9,12 +9,7 @@ import {
 	ShowMediumsModalState,
 } from "../../state/atoms"
 import { useState } from "react"
-import {
-	FOOTER_HEIGHT,
-	MAX_WIDTH,
-	MOBILE_WIDTH,
-	NAV_HEIGHT,
-} from "../../styles/constants"
+import { FOOTER_HEIGHT, MAX_WIDTH, NAV_HEIGHT } from "../../styles/constants"
 import { motion } from "framer-motion"
 
 type Props = {
@@ -31,6 +26,10 @@ export const MediumsModal = ({ details }: Props) => {
 
 	const handleCloseModal = () => {
 		setShowModal(false)
+	}
+
+	const handleDetailsToggle = () => {
+		setShowDetails((prev) => !prev)
 	}
 
 	const variants = {
@@ -59,13 +58,20 @@ export const MediumsModal = ({ details }: Props) => {
 				<CloseModal onClick={handleCloseModal}>
 					<CloseIcon height={15} />
 				</CloseModal>
-				{(!isMobile && !isTablet) && (
+				{!isMobile && !isTablet && (
 					<ProjectDetails mobile={isMobile}>
 						<Category>{details.category}</Category>
-						<Title>{details.title}</Title>
-						{details.details.map((p, i) => (
-							<Detail key={i}>{p}</Detail>
-						))}
+						<TitleWrapper>
+							<Title>{details.title}</Title>
+							<DetailsToggle onClick={handleDetailsToggle}>
+								{showDetails ? "details ↑" : "details ↓"}
+							</DetailsToggle>
+						</TitleWrapper>
+						<DetailWrapper show={showDetails}>
+							{details.details.map((p, i) => (
+								<Detail key={i}>{p}</Detail>
+							))}
+						</DetailWrapper>
 					</ProjectDetails>
 				)}
 			</ImageWrapper>
@@ -117,13 +123,15 @@ const CloseModal = styled("div", {
 	width: 30,
 	height: 30,
 	borderRadius: 15,
-	border: "1px solid $primary100",
+	border: "1px solid $light100",
 	background: "$black",
+	color: "$light100",
 	transition: "$medium",
 	cursor: "pointer",
 	zIndex: 2,
 
 	"&:hover": {
+		border: "1px solid $primary100",
 		background: "$dark100",
 		color: "$primary100",
 	},
@@ -163,6 +171,39 @@ const GalleryImage = styled(Image, {
 	},
 })
 
+const TitleWrapper = styled("div", {
+	display: "flex",
+	alignItems: "flex-end",
+	justifyContent: "space-between",
+})
+
+const DetailsToggle = styled("p", {
+	lineHeight: 1.4,
+	fontSize: "$s",
+	cursor: "pointer",
+	userSelect: "none",
+	opacity: 0.6,
+
+	"&:hover": {
+		opacity: 1,
+		color: "$primary100",
+	},
+})
+
+const DetailWrapper = styled("div", {
+	overflow: "hidden",
+	maxHeight: 0,
+	transition: "$medium",
+
+	variants: {
+		show: {
+			true: {
+				maxHeight: 200,
+			},
+		},
+	},
+})
+
 const ProjectDetails = styled("div", {
 	padding: "$m 0",
 	width: "100%",
@@ -174,12 +215,10 @@ const ProjectDetails = styled("div", {
 				top: 0,
 				left: 0,
 				width: 300,
-				// borderLeft: '1px solid $primary100',
-				// transform: 'translateY(-50%)',
 				padding: "$xl $m",
 				background: "rgba(0,0,0,.5)",
 				borderRadius: "$radS 0 $radS 0",
-				backdropFilter: 'blur(4px)',
+				backdropFilter: "blur(4px)",
 				zIndex: 1,
 			},
 		},
@@ -190,8 +229,8 @@ const Category = styled("p", {
 })
 const Title = styled("h2", {
 	color: "$primary100",
-	marginBottom: "$m",
 })
 const Detail = styled("p", {
 	lineHeight: 1.2,
+	marginTop: "$m",
 })
