@@ -3,21 +3,31 @@ import Link from "next/link"
 import { useRecoilValue } from "recoil"
 import { WorkData } from "../lib/data/workData"
 import Layout from "../src/components/Layout"
+import { PageHeader } from "../src/components/PageHeader"
 import { IsMobileState } from "../state/atoms"
-import { GradientSpan } from "../styles/commonStyles"
-import { theme } from "../styles/stitches.config"
 
 const title = "Work Experience"
 const subtitle = "Check out my recent work experience!"
+const description = (
+	<>
+		I am a forward thinking, ambitious, and thoughtful designer that loves
+		working with like minded teammates to create nothing short of{" "}
+		<span>premium experiences and interfaces</span> for users. With a background
+		designing in many mediums, I have found a satisfying niche in the digital
+		domain. Thinking out of the box and pushing the envelope of what can be done
+		and using analytics to steer core philosophies have driven me throughout my
+		career. I&apos;m also not afraid and even relish the opportunity to roll up
+		my sleeves, <span>dive into the code and implement designs</span> I or
+		others have worked on.
+	</>
+)
 
 export default function Work() {
 	const isMobile = useRecoilValue(IsMobileState)
 	return (
 		<Layout title="Work" description={`${title} - ${subtitle}`}>
-			<Section mobile={isMobile}>
-				<MainTitle>
-					<GradientSpan>Work Experience</GradientSpan>
-				</MainTitle>
+			<PageHeader title={title} description={description} />
+			<Section>
 				<CardGrid>
 					{WorkData.map((data, i) => {
 						const Logo = data.logo
@@ -48,31 +58,18 @@ export default function Work() {
 	)
 }
 const Section = styled("section", {
-	background: "$dark100",
 	display: "flex",
 	flexDirection: "column",
 	alignItems: "center",
 	justifyContent: "center",
-	padding: "$l",
-
-	variants: {
-		mobile: {
-			true: {
-				padding: "$s",
-			},
-		},
-	},
-})
-
-const MainTitle = styled("h1", {
-	margin: "$xl 0",
+	minHeight: "max-content",
 })
 
 const CardGrid = styled("div", {
 	justifySelf: "center",
 	display: "grid",
 	gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-	gap: "$xl",
+	gap: "$m",
 	width: "100%",
 })
 
@@ -83,32 +80,14 @@ const MainLink = styled(Link, {
 const Card = styled("div", {
 	display: "flex",
 	flexDirection: "column",
-	background: "$dark200",
+	background: "$dark100",
 	padding: "$xl",
 	borderRadius: "$radS",
-	transform: "scale(.9)",
 	transition: "$medium",
 	position: "relative",
 
-	"&::after": {
-		position: "absolute",
-		content: "",
-		top: 0,
-		bottom: 0,
-		left: 0,
-		right: 0,
-		borderRadius: "$radL",
-		opacity: 0,
-		boxShadow: `0px 0px 20px ${theme.colors.black}`,
-		transition: "$medium",
-	},
-
 	"&:hover": {
-		transform: "scale(1)",
-
-		"&::after": {
-			opacity: 0.5,
-		},
+		background: "$dark200",
 	},
 })
 
