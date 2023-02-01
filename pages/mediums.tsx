@@ -3,21 +3,20 @@ import { styled } from "@stitches/react"
 import { MediumsData } from "../lib/data/mediumsData"
 import Layout from "../src/components/Layout"
 import Image from "next/image"
-import { useState } from "react"
-import { MediumsModal } from "../src/components/MediumsModal"
 import { MediumsItem } from "../types"
-import { useRecoilState } from "recoil"
+import { useSetRecoilState } from "recoil"
 import { ModalDetailsState, ShowMediumsModalState } from "../state/atoms"
-import { AnimatePresence, motion } from "framer-motion"
+import { motion } from "framer-motion"
 import { MAX_WIDTH, MOBILE_WIDTH } from "../styles/constants"
+import { GradientSpan } from "../styles/commonStyles"
 
 const title = "Hello, I'm Drew 👋"
 const subtitle =
 	"I'm a UI/UX Design Engineer at Stashpad, and living in Charlotte, North Carolina."
 
 export default function Mediums() {
-	const [showModal, setShowModal] = useRecoilState(ShowMediumsModalState)
-	const [modalDetails, setModalDetails] = useRecoilState(ModalDetailsState)
+	const setShowModal = useSetRecoilState(ShowMediumsModalState)
+	const setModalDetails = useSetRecoilState(ModalDetailsState)
 	const breakpointColumnsObj = {
 		default: 3,
 		1000: 2,
@@ -37,6 +36,14 @@ export default function Mediums() {
 
 	return (
 		<Layout title="Design Mediums" description={`${title} - ${subtitle}`}>
+			<Header>
+				<MainTitle>
+					<GradientSpan>Mediums</GradientSpan>
+				</MainTitle>
+				<Description>
+					While my primary focus is UX/UI design and software enginnering, I am a student of many other design mediums as well. For the last 8 years my free-time has been occupied by <span>architectural, interior and 3D design</span> both as a freelancer and a hobbyist. Below you can see some examples of this work.
+				</Description>
+			</Header>
 			<Section>
 				<Masonry
 					breakpointCols={breakpointColumnsObj}
@@ -73,8 +80,28 @@ export default function Mediums() {
 		</Layout>
 	)
 }
+
+const Header = styled("div", {
+	display: 'flex',
+	flexDirection: 'column',
+	alignItems: 'center',
+	margin: "$xl $m $xxl",
+})
+
+const MainTitle = styled("h1", {
+	marginBottom: '$l',
+})
+const Description = styled("p", {
+	maxWidth: 900,
+	textAlign: 'center',
+
+	'& span': {
+		color: '$primary100'
+	}
+})
+
 const Section = styled("section", {
-	minHeight: "100%",
+	minHeight: "max-content",
 	position: "relative",
 })
 
