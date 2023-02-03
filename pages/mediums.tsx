@@ -12,112 +12,112 @@ import { PageHeader } from "../src/components/PageHeader"
 
 const title = "Design Mediums"
 const subtitle =
-	"While my primary focus is on UX/UI design and software enginnering, I am a student of architectural, interior and 3D design as well."
+  "While my primary focus is on UX/UI design and software enginnering, I am a student of architectural, interior and 3D design as well."
 const description = (
-	<>
-		While my primary focus is on UX/UI design and software enginnering, I am a
-		student of many other design mediums as well. For the last 8 years my
-		free-time has been occupied by{" "}
-		<span>architectural, interior and 3D design</span> both as a freelancer and
-		a hobbyist. Below you can see some examples of this work.
-	</>
+  <>
+    While my primary focus is on UX/UI design and software enginnering, I am a
+    student of many other design mediums as well. For the last 8 years my
+    free-time has been occupied by{" "}
+    <span>architectural, interior and 3D design</span> both as a freelancer and
+    a hobbyist. Below you can see some examples of this work.
+  </>
 )
 
 export default function Mediums() {
-	const setShowModal = useSetRecoilState(ShowMediumsModalState)
-	const setModalDetails = useSetRecoilState(ModalDetailsState)
-	const breakpointColumnsObj = {
-		default: 3,
-		1000: 2,
-		640: 1,
-	}
+  const setShowModal = useSetRecoilState(ShowMediumsModalState)
+  const setModalDetails = useSetRecoilState(ModalDetailsState)
+  const breakpointColumnsObj = {
+    default: 3,
+    1000: 2,
+    640: 1,
+  }
 
-	const handleClick = (item: MediumsItem) => {
-		setModalDetails(item)
-		setShowModal((prev) => !prev)
-	}
+  const handleClick = (item: MediumsItem) => {
+    setModalDetails(item)
+    setShowModal((prev) => !prev)
+  }
 
-	const variants = {
-		hidden: { opacity: 0 },
-		enter: { opacity: 1 },
-		exit: { opacity: 0 },
-	}
+  const variants = {
+    hidden: { opacity: 0 },
+    enter: { opacity: 1 },
+    exit: { opacity: 0 },
+  }
 
-	return (
-		<Layout title="Design Mediums" description={`${title} - ${subtitle}`}>
-			<PageHeader title={title} description={description} />
-			<Section>
-				<Masonry
-					breakpointCols={breakpointColumnsObj}
-					className="masonry-grid"
-					columnClassName="masonry-grid-column"
-				>
-					{MediumsData.map((item, i) => (
-						<Card
-							key={i}
-							initial="hidden"
-							animate="enter"
-							exit="exit"
-							variants={variants}
-							onClick={() => handleClick(item)}
-						>
-							<HoverDetails>
-								<Category>{item.category}</Category>
-								<Title>{item.title}</Title>
-							</HoverDetails>
-							<GalleryImage
-								key={i}
-								src={item.image.src}
-								alt={item.title}
-								width={item.image.width}
-								height={item.image.height}
-								sizes={`(max-width: ${MOBILE_WIDTH}) 100vw,(max-width: ${MAX_WIDTH}) 50vw, ${
-									MAX_WIDTH / 3
-								}`}
-							/>
-						</Card>
-					))}
-				</Masonry>
-			</Section>
-		</Layout>
-	)
+  return (
+    <Layout title="Design Mediums" description={`${title} - ${subtitle}`}>
+      <PageHeader title={title} description={description} />
+      <Section>
+        <Masonry
+          breakpointCols={breakpointColumnsObj}
+          className="masonry-grid"
+          columnClassName="masonry-grid-column"
+        >
+          {MediumsData.map((item, i) => (
+            <Card
+              key={i}
+              initial="hidden"
+              animate="enter"
+              exit="exit"
+              variants={variants}
+              onClick={() => handleClick(item)}
+            >
+              <HoverDetails>
+                <Category>{item.category}</Category>
+                <Title>{item.title}</Title>
+              </HoverDetails>
+              <GalleryImage
+                key={i}
+                src={item.image.src}
+                alt={item.title}
+                width={item.image.width}
+                height={item.image.height}
+                sizes={`(max-width: ${MOBILE_WIDTH}) 100vw,(max-width: ${MAX_WIDTH}) 50vw, ${
+                  MAX_WIDTH / 3
+                }`}
+              />
+            </Card>
+          ))}
+        </Masonry>
+      </Section>
+    </Layout>
+  )
 }
 
 const Section = styled("section", {
-	minHeight: "max-content",
-	position: "relative",
+  minHeight: "max-content",
+  position: "relative",
 })
 
 const Card = styled(motion.div, {
-	position: "relative",
+  position: "relative",
 })
 
 const HoverDetails = styled("div", {
-	display: "flex",
-	flexDirection: "column",
-	justifyContent: "center",
-	alignItems: "center",
-	background: "rgba(0,0,0,.7)",
-	position: "absolute",
-	top: 0,
-	right: 0,
-	bottom: 0,
-	left: 0,
-	cursor: "pointer",
-	opacity: 0,
-	transition: "$medium",
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "center",
+  background: "rgba(0,0,0,.7)",
+  position: "absolute",
+  top: 0,
+  right: 0,
+  bottom: 0,
+  left: 0,
+  cursor: "pointer",
+  opacity: 0,
+  transition: "$medium",
 
-	"&:hover": {
-		opacity: 1,
-	},
+  "&:hover": {
+    opacity: 1,
+  },
 })
 const Category = styled("p", {})
 const Title = styled("h2", {})
 
 const GalleryImage = styled(Image, {
-	display: "block",
-	width: "100%",
-	height: "auto",
-	maxHeight: "100%",
-	borderRadius: "$radS",
+  display: "block",
+  width: "100%",
+  height: "auto",
+  maxHeight: "100%",
+  borderRadius: "$radS",
 })

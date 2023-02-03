@@ -10,46 +10,46 @@ import { RecoilRoot } from "recoil"
 import Script from "next/script"
 
 export default function App({ Component, pageProps, router }: AppProps) {
-	const url = `https://www.drew-white.dev${router.route}`
+  const url = `https://www.drew-white.dev${router.route}`
 
-	globalStyles()
+  globalStyles()
 
-	return (
-		<RecoilRoot>
-			<div className="app">
-				<Head>
-					<link rel="icon" href="/favicon.ico" type="image/png" />
-				</Head>
-				{/* Fathom - beautiful, simple website analytics */}
-				<Script
-					src="https://cdn.usefathom.com/script.js"
-					data-site="MVWVAEIK"
-					defer
-				/>
-				{/* / Fathom  */}
-				<DefaultSeo
-					titleTemplate="%s - Drew White"
-					openGraph={{
-						type: "website",
-						locale: "en_IE",
-						url,
-						description:
-							"The personal website for Drew White, UI/UX Design Engineer.",
-						site_name: "Drew White | drew-white.dev",
-						images: [],
-					}}
-					canonical={url}
-				/>
-				<Navbar />
-				<AnimatePresence
-					mode="wait"
-					initial={false}
-					onExitComplete={() => window.scrollTo(0, 0)}
-				>
-					<Component {...pageProps} canonical={url} key={url} />
-				</AnimatePresence>
-				<Footer />
-			</div>
-		</RecoilRoot>
-	)
+  return (
+    <RecoilRoot>
+      <div className="app">
+        <Head>
+          <link rel="icon" href="/favicon.ico" type="image/png" />
+        </Head>
+        {/* Fathom - beautiful, simple website analytics */}
+        <Script
+          src="https://cdn.usefathom.com/script.js"
+          data-site="MVWVAEIK"
+          defer
+        />
+        {/* / Fathom  */}
+        <DefaultSeo
+          titleTemplate="%s - Drew White"
+          openGraph={{
+            type: "website",
+            locale: "en_IE",
+            url,
+            description:
+              "The personal website for Drew White, UI/UX Design Engineer.",
+            site_name: "Drew White | drew-white.dev",
+            images: [],
+          }}
+          canonical={url}
+        />
+        <Navbar />
+        <AnimatePresence
+          mode="wait"
+          initial={false}
+          onExitComplete={() => window.scrollTo(0, 0)}
+        >
+          <Component {...pageProps} canonical={url} key={url} />
+        </AnimatePresence>
+        <Footer />
+      </div>
+    </RecoilRoot>
+  )
 }
