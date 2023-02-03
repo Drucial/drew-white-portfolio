@@ -101,7 +101,7 @@ const ProjectWrapper = styled("div", {
 	width: "95%",
 	maxWidth: 1300,
 	aspectRatio: 1.778,
-	borderRadius: "$radL",
+	borderRadius: "$radS",
 
 	variants: {
 		mobile: {
@@ -122,7 +122,7 @@ const GraphicsWrapper = styled("div", {
 	minWidth: 320,
 	aspectRatio: 0.46,
 	border: '1px solid rgba(255,255,255,.1)',
-	borderRadius: "$radL",
+	borderRadius: "$radS",
 	boxShadow: "0px 0px 25px rgba(0,0,0,.5)",
 	transition: "$long",
 	zIndex: 2,
@@ -160,7 +160,7 @@ const IFrame = styled("iframe", {
 	width: "125%",
 	transform: "scale(0.8)",
 	transformOrigin: "top left",
-	borderRadius: "$radL",
+	borderRadius: "$radS",
 	overflow: "hidden",
 })
 

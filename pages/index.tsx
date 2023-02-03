@@ -92,8 +92,9 @@ const Section = styled("section", {
 	display: "flex",
 	justifyContent: "center",
 	alignItems: "center",
-	scrollSnapAlign: "start",
+	scrollSnapAlign: "center",
 	padding: "$l",
+	borderRadius: '$radS'
 })
 
 const MainHeading = styled("h1", {
