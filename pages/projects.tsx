@@ -98,7 +98,7 @@ const ProjectWrapper = styled("div", {
   justifyContent: "center",
   position: "relative",
   background: "$dark100",
-  width: "95%",
+  width: "80%",
   maxWidth: 1300,
   aspectRatio: 1.778,
   borderRadius: "$radS",
